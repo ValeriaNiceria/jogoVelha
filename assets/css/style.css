@@ -1,0 +1,32 @@
+#mostrador {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Bangers', cursive;
+    font-size: 30px;
+}
+
+#jogo {
+    margin: auto;
+    width: 470px;
+}
+
+.campo {
+    width: 150px;
+    height: 150px;
+    border: 4px solid black;
+    float: left;
+}
+
+#a1, #a2, #a3 {
+    border-top: none;
+}
+#a1, #b1, #c1 {
+    border-left: none;
+}
+#a3, #b3, #c3 {
+    border-right: none;
+}
+#c1, #c2, #c3 {
+    border-bottom: none;
+}
