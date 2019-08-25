@@ -3,8 +3,31 @@ const player2 = 'o'
 var playTime = player1
 var gameOver = false
 
-atualizarMostrador()
-inicializarCampos()
+
+async function startGame() {
+    limparCampos()
+    let inicializacao = document.getElementById('inicializacao')
+    let areaJogo = document.getElementById('area-jogo')
+    let gameOverArea = document.getElementById('gameOver')
+
+    inicializacao.style.display = 'none'
+    gameOverArea.style.display = 'none'
+
+    await sleep(50) 
+    areaJogo.style.display = 'block'
+
+    atualizarMostrador()
+    inicializarCampos()
+}
+
+function limparCampos() {
+    gameOver = false
+    let campos = document.getElementsByClassName('campo')
+    for (let i = 0; i < campos.length; i++) {
+        campos[i].setAttribute('jogada', '')
+        campos[i].innerHTML = ''
+    }   
+}
 
 function atualizarMostrador() {
     if (!gameOver) {
@@ -74,8 +97,42 @@ async function verificarVencedor() {
 
     if (vencedor != '') {
         gameOver = true
+        let areaJogo = document.getElementById('area-jogo')
+        let gameOverArea = document.getElementById('gameOver')
+        let gameOverMessage = document.getElementsByClassName('message')[0]
+
+        areaJogo.style.display = 'none'
+        gameOverArea.style.display = 'block'
+        gameOverMessage.innerHTML = ''
+
         await sleep(50) 
-        alert(`O vencedor foi o: ${vencedor}`)
+        gameOverMessage.innerHTML = `
+        <h1>vencedor: <img src="./assets/img/${vencedor}.jpg" width="170px"></h1>
+        <div id="start-game">
+            <center>
+                <button onclick="startGame()">Recomeçar</button>
+            </center>
+        </div>`
+    } else {
+        if ((a1 != '' && a2 != '' && a3 != '') && (b1 != '' && b2 != '' && b3 != '') && (c1 != '' && c2 != '' && c3 != '')) {
+            gameOver = true
+            let areaJogo = document.getElementById('area-jogo')
+            let gameOverArea = document.getElementById('gameOver')
+            let gameOverMessage = document.getElementsByClassName('message')[0]
+
+            areaJogo.style.display = 'none'
+            gameOverArea.style.display = 'block'
+            gameOverMessage.innerHTML = ''
+
+            await sleep(50) 
+            gameOverMessage.innerHTML = `
+            <h1>deu velha!</h1>
+            <div id="start-game">
+                <center>
+                    <button onclick="startGame()">Recomeçar</button>
+                </center>
+            </div>`
+        }
     }
 }
 

@@ -10,25 +10,37 @@
 </head>
 <body>
 
-    <div id="inicializacao"></div>
+    <div id="inicializacao">
+        <h1>Jogo da Velha</h1>
+        <div id="start-game">
+            <center>
+                <button onclick="startGame()">Começar</button>
+            </center>
+        </div>
+    </div>
     
-    <div id="mostrador">Vez do jogador: 
-        <img class="playerTime" src="" width="35">
+    <div id="area-jogo">
+        <div id="mostrador">Vez do jogador: 
+            <img class="playerTime" src="" width="35">
+        </div>
+    
+        <div id="jogo">
+            <div id="a1" class="campo"  jogada=""></div>
+            <div id="a2" class="campo" jogada=""></div>
+            <div id="a3" class="campo" jogada=""></div>
+            <div id="b1" class="campo" jogada=""></div>
+            <div id="b2" class="campo" jogada=""></div>
+            <div id="b3" class="campo" jogada=""></div>
+            <div id="c1" class="campo" jogada=""></div>
+            <div id="c2"  class="campo" jogada=""></div>
+            <div id="c3"  class="campo" jogada=""></div>
+        </div>
     </div>
+    
 
-    <div id="jogo">
-        <div id="a1" class="campo"  jogada=""></div>
-        <div id="a2" class="campo" jogada=""></div>
-        <div id="a3" class="campo" jogada=""></div>
-        <div id="b1" class="campo" jogada=""></div>
-        <div id="b2" class="campo" jogada=""></div>
-        <div id="b3" class="campo" jogada=""></div>
-        <div id="c1" class="campo" jogada=""></div>
-        <div id="c2"  class="campo" jogada=""></div>
-        <div id="c3"  class="campo" jogada=""></div>
+    <div id="gameOver">
+        <div class="message"></h1>
     </div>
-
-    <div id="gameOver"></div>
     
     <script src="./assets/js/game.js"></script>
 </body>
