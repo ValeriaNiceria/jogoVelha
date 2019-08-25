@@ -2,9 +2,15 @@ const player1 = 'x'
 const player2 = 'o'
 var playTime = player1
 var gameOver = false
+var audioClick = document.getElementById('audio-click')
+var audioLoser = document.getElementById('audio-over')
+var audioWiner = document.getElementById('audio-winer')
 
 
 async function startGame() {
+    audioLoser.pause()
+    audioWiner.pause()
+    audioClick.play()
     limparCampos()
     let inicializacao = document.getElementById('inicializacao')
     let areaJogo = document.getElementById('area-jogo')
@@ -51,6 +57,7 @@ function inicializarCampos() {
         campos[i].addEventListener('click', function() {
             if (!gameOver) {
                 if (this.getElementsByTagName('img').length == 0) {
+                    audioClick.play()
                     this.innerHTML = `<img src="./assets/img/${playTime}.jpg" width="95%">`
                     this.setAttribute('jogada', playTime)
                     atualizarJogador()
@@ -101,6 +108,7 @@ async function verificarVencedor() {
         let gameOverArea = document.getElementById('gameOver')
         let gameOverMessage = document.getElementsByClassName('message')[0]
 
+        audioWiner.play()
         areaJogo.style.display = 'none'
         gameOverArea.style.display = 'block'
         gameOverMessage.innerHTML = ''
@@ -115,6 +123,7 @@ async function verificarVencedor() {
         </div>`
     } else {
         if ((a1 != '' && a2 != '' && a3 != '') && (b1 != '' && b2 != '' && b3 != '') && (c1 != '' && c2 != '' && c3 != '')) {
+            audioLoser.play()
             gameOver = true
             let areaJogo = document.getElementById('area-jogo')
             let gameOverArea = document.getElementById('gameOver')
